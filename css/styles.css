@@ -85,27 +85,32 @@ img {
     display: block; /* Removes bottom space under images */
 }
 
-/* --- Basic Layout Elements --- */
+/* --- Header Enhancements --- */
 header {
-    background-color: var(--color-background-light);
-    padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 3);
-    border-bottom: 1px solid #eee; /* Light separator */
+    background-color: var(--color-cloud); /* Kept light for a clean look */
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 3); /* Reduced vertical padding slightly */
+    border-bottom: 1px solid #e0e0e0; /* Softer border */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky; /* Sticky header for better navigation */
+    top: 0;
+    z-index: 1000; /* Ensure header stays on top */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Subtle shadow for depth */
 }
 
 .logo-container .logo-text {
     font-family: var(--font-headlines);
-    font-size: clamp(1.5rem, 0.5vw + 1.3rem, 2rem);
-    font-weight: 600; /* Semi-bold for Playfair if available */
-    color: var(--color-neutral-dark);
+    font-size: clamp(1.8rem, 0.5vw + 1.6rem, 2.2rem); /* Slightly larger logo */
+    font-weight: 700; /* Playfair Display bold */
+    color: var(--color-primary-theme); /* Ocean blue for logo */
     text-decoration: none;
-}
-.logo-container .logo-text:hover {
-    color: var(--color-ocean-blue);
+    transition: color 0.3s ease;
 }
 
+.logo-container .logo-text:hover {
+    color: var(--color-neutral-dark);
+}
 
 nav ul {
     list-style: none;
@@ -121,18 +126,46 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
     font-weight: 600; /* Inter semi-bold */
-    color: var(--color-text-primary);
-    padding: var(--spacing-unit) calc(var(--spacing-unit) * 1.5);
-    border-radius: var(--border-radius-small);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: var(--font-primary);
+    color: var(--color-neutral-dark); /* Darker text for better contrast */
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2); /* Increased padding for bigger hit area */
+    border-radius: var(--border-radius-medium); /* Slightly more rounded */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    position: relative; /* For pseudo-elements */
+    overflow: hidden; /* For effects */
+}
+
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: var(--color-saffron-accent);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::before,
+nav ul li a:focus::before,
+nav ul li a.active::before {
+    width: 70%; /* Underline effect */
 }
 
 nav ul li a:hover,
 nav ul li a:focus,
-nav ul li a.active { /* Assuming an 'active' class for current page */
-    background-color: var(--color-primary-theme);
-    color: var(--color-cloud);
-    text-decoration: none;
+nav ul li a.active {
+    background-color: transparent; /* Remove background color change */
+    color: var(--color-primary-theme); /* Change text color to primary theme on hover/active */
+    text-decoration: none; /* Ensure no underline from default browser styles */
+    transform: translateY(-1px); /* Subtle lift effect */
+}
+
+/* Adjust active link specifically if an active class is used */
+nav ul li a.active {
+    color: var(--color-primary-theme);
+    font-weight: 700; /* Bolder for active */
 }
 
 #cart-icon-container {
@@ -159,11 +192,11 @@ nav ul li a.active { /* Assuming an 'active' class for current page */
     text-align: center;
 }
 
-
 main {
     padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 3);
     max-width: 1200px; /* Max content width for larger screens */
     margin: 0 auto; /* Center main content */
+    padding-top: calc(var(--spacing-unit) * 12); /* Add padding to offset sticky header */
 }
 
 footer {
@@ -185,7 +218,6 @@ footer a {
 footer a:hover, footer a:focus {
     color: var(--color-accent-secondary); /* Wasabi for footer link hover */
 }
-
 
 /* --- Utility Classes --- */
 .button {
@@ -287,23 +319,68 @@ footer a:hover, footer a:focus {
 /* --- Page Specific: About Us --- */
 
 .hero-section {
-    background-color: var(--color-primary-theme); /* Ocean Blue background */
-    color: var(--color-cloud); /* White text */
-    padding: calc(var(--spacing-unit) * 6) calc(var(--spacing-unit) * 3);
-    margin-bottom: calc(var(--spacing-unit) * 4); /* Space below hero */
+    position: relative; /* Needed for absolute positioning of overlay and image */
+    background-color: var(--color-primary-theme); /* Fallback if image fails */
+    color: var(--color-cloud);
+    padding: calc(var(--spacing-unit) * 8) calc(var(--spacing-unit) * 3); /* Increased padding */
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    overflow: hidden; /* To contain pseudo-elements or absolutely positioned children */
+}
+
+.hero-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/restaurant-interior_placeholder.jpg'); /* Placeholder */
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 92, 141, 0.7); /* Ocean blue with 70% opacity */
+    z-index: 2;
+}
+
+.hero-section .hero-content {
+    position: relative; /* To sit on top of overlay and image */
+    z-index: 3;
 }
 
 .hero-section .hero-title {
-    color: var(--color-cloud); /* Ensure title is white */
-    font-size: clamp(2.5rem, 1.5vw + 2rem, 3.5rem); /* Larger hero title */
-    margin-bottom: calc(var(--spacing-unit) * 1);
+    color: var(--color-cloud);
+    font-size: clamp(2.8rem, 2vw + 2.2rem, 4.5rem); /* Even larger hero title */
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    font-weight: 700; /* Playfair Display Bold */
+    line-height: 1.1;
+}
+
+.hero-title .highlight-playful {
+    font-family: 'Playfair Display', serif; /* Or a more playful script if available */
+    color: var(--color-saffron-accent); /* Saffron accent for highlight */
+    display: inline-block; /* Allows for subtle transformations if desired */
 }
 
 .hero-section .hero-subtitle {
-    font-size: clamp(1.1rem, 0.5vw + 1rem, 1.5rem);
+    font-size: clamp(1.2rem, 0.6vw + 1rem, 1.7rem); /* Larger subtitle */
     font-family: var(--font-primary);
     font-weight: 400;
-    opacity: 0.9;
+    opacity: 0.95; /* Slightly more opaque */
+    margin-bottom: calc(var(--spacing-unit) * 4); /* More space before CTA */
+}
+
+.hero-cta {
+    padding: calc(var(--spacing-unit) * 1.75) calc(var(--spacing-unit) * 3.5);
+    font-size: clamp(1rem, 0.5vw + 0.8rem, 1.25rem); /* Responsive font size for button */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .text-center {
@@ -313,33 +390,91 @@ footer a:hover, footer a:focus {
 #founder-story .founder-image {
     border-radius: var(--border-radius-medium);
     margin-bottom: calc(var(--spacing-unit) * 2);
+    /* Replaced by .responsive-image and .shadow-lift potentially */
 }
 
-/* Card-like styling for points/features */
-.sustainability-points,
-.farm-partners-list ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: calc(var(--spacing-unit) * 3);
-    padding-left: 0; /* Remove default ul padding if it's a list */
-    list-style: none; /* Remove list styles if it's a list */
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-medium);
 }
 
+.shadow-lift {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.shadow-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.founder-content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: calc(var(--spacing-unit) * 4);
+    align-items: center;
+}
+
+@media (min-width: 769px) { /* Apply two-column layout for wider screens */
+    .founder-content-grid {
+        grid-template-columns: 1fr 1.5fr; /* Image smaller column, text larger */
+    }
+    #founder-story .founder-image-container {
+        padding-right: calc(var(--spacing-unit) * 3); /* Optional: if image needs to be not full width of its column */
+    }
+}
+
+.founder-text-content .lead-paragraph {
+    font-size: clamp(1.1rem, 0.5vw + 0.9rem, 1.3rem);
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+}
+
+.founder-text-content p {
+    margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+/* Card visual polish */
 .sustainability-points .point,
 .farm-partners-list li {
     background-color: var(--color-background-light);
-    border: 1px solid #e0e0e0; /* Light border for cards */
+    border: 1px solid #e0e0e0;
     border-radius: var(--border-radius-medium);
     padding: calc(var(--spacing-unit) * 2.5);
-    flex: 1 1 300px; /* Flex-grow, flex-shrink, flex-basis */
+    flex: 1 1 300px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative; /* For accent border */
+    overflow: hidden; /* To contain accent border */
+}
+
+.sustainability-points .point::before,
+.farm-partners-list li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px; /* Thickness of the accent border */
+    background-color: var(--color-saffron-accent); /* Saffron accent */
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease-out;
+}
+
+.sustainability-points .point:hover::before,
+.farm-partners-list li:hover::before {
+    transform: scaleX(1);
 }
 
 .sustainability-points .point:hover,
 .farm-partners-list li:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    border-color: #d0d0d0; /* Slightly darker border on hover */
 }
 
 .sustainability-points .point img {
