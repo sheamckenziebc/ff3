@@ -32,9 +32,11 @@
     </header>
 
     <main>
-        <section id="about-hero">
-            <h2>Our Story: From Passion to Plate</h2>
-            <p>Discover the inspiration behind Abhay's Eats.</p>
+        <section id="about-hero" class="hero-section text-center">
+            <div class="hero-content">
+                <h1 class="hero-title">Our Story: From Passion to Plate</h1>
+                <p class="hero-subtitle">Discover the inspiration and commitment behind Abhay's Eats.</p>
+            </div>
         </section>
 
         <section id="founder-story">
@@ -48,7 +50,7 @@
 
         <section id="sustainability-commitment">
             <h3>Rooted in Sustainability & Community</h3>
-            <p>We believe great food shouldn't cost the Earth. Here's how we're making a difference:</p>
+            <p class="text-center">We believe great food shouldn't cost the Earth. Here's how we're making a difference:</p>
             <div class="sustainability-points">
                 <div class="point">
                     <img src="assets/images/local-farms_placeholder.png" alt="Local Farm Icon">
@@ -70,23 +72,31 @@
 
         <section id="farm-to-table-map">
             <h3>Our Local Heroes: Farm-to-Table</h3>
-            <p>We're proud to partner with these amazing local suppliers:</p>
-            <div class="map-placeholder">
+            <p class="text-center">We're proud to partner with these amazing local suppliers:</p>
+            <div class="map-placeholder text-center">
                 <!-- Placeholder for an illustrative map or a list/gallery of farm partners -->
-                <img src="assets/images/bc-map-farms_placeholder.jpg" alt="Map highlighting local farm partners in BC">
+                <img src="assets/images/bc-map-farms_placeholder.jpg" alt="Map highlighting local farm partners in BC" style="max-width: 600px; margin-left: auto; margin-right: auto;">
                 <p>(Illustrative map showing approximate locations of farm partners, or a dynamic Leaflet map if feasible without heavy libraries and with pre-cached tiles for offline preview as per advanced requirements - for now, a static image placeholder).</p>
             </div>
-            <div class="farm-partners-list">
-                <!-- Placeholder for list of farm partners -->
-                <ul>
-                    <li><a href="#" target="_blank" rel="noopener noreferrer">Farm Partner 1</a> - Sourcing our crisp lettuce</li>
-                    <li><a href="#" target="_blank" rel="noopener noreferrer">Farm Partner 2</a> - Providing fresh berries</li>
-                    <li><a href="#" target="_blank" rel="noopener noreferrer">Farm Partner 3</a> - Our go-to for organic potatoes</li>
+            <div class="farm-partners-container">
+                <ul class="farm-partners-list">
+                    <li>
+                        <h4><a href="#" target="_blank" rel="noopener noreferrer">Farm Partner 1</a></h4>
+                        <p>Sourcing our crisp lettuce</p>
+                    </li>
+                    <li>
+                        <h4><a href="#" target="_blank" rel="noopener noreferrer">Farm Partner 2</a></h4>
+                        <p>Providing fresh berries</p>
+                    </li>
+                    <li>
+                        <h4><a href="#" target="_blank" rel="noopener noreferrer">Farm Partner 3</a></h4>
+                        <p>Our go-to for organic potatoes</p>
+                    </li>
                 </ul>
             </div>
         </section>
         
-        <section id="careers-preview">
+        <section id="careers-preview" class="text-center">
             <h3>Join Our Team</h3>
             <p>Passionate about food and community? We're always looking for enthusiastic individuals to join the Abhay's Eats family. While we don't have a dedicated careers page yet, feel free to reach out via our contact page if you're interested!</p>
             <a href="contact.html" class="button">Contact Us</a>

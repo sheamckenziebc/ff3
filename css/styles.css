@@ -6,20 +6,22 @@
     --color-ocean-blue: #005C8D;
     --color-wasabi-green: #7DBE45;
     --color-saffron-accent: #FFC857;
-    --color-neutral-dark: #151515; /* High-contrast neutral from original prompt */
-    --color-night: #121212;       /* Night from lean prompt */
-    --color-cloud: #FFFFFF;       /* Cloud from lean prompt */
-    --color-text-primary: var(--color-night);
-    --color-text-secondary: #4a4a4a; /* A slightly lighter grey for secondary text */
+    --color-neutral-dark: #151515; /* High-contrast neutral */
+    --color-cloud: #FFFFFF;       /* Using pure white for a clean background */
+    
+    --color-text-primary: var(--color-neutral-dark);
+    --color-text-secondary: #555555; /* A slightly lighter grey for secondary text */
     --color-background-light: var(--color-cloud);
-    --color-background-dark: var(--color-night);
-    --color-accent: var(--color-saffron-accent);
-    --color-primary-action: var(--color-ocean-blue);
-    --color-secondary-action: var(--color-wasabi-green);
+    --color-background-dark: var(--color-neutral-dark); /* For footer or inverted sections */
+    --color-accent-primary: var(--color-saffron-accent);
+    --color-accent-secondary: var(--color-wasabi-green);
+    --color-call-to-action: var(--color-saffron-accent); /* Saffron for CTAs */
+    --color-primary-theme: var(--color-ocean-blue);
+    --color-secondary-theme: var(--color-wasabi-green);
 
     /* Typography */
     --font-primary: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    --font-headlines: 'Playfair Display', serif; /* From original prompt, fallback to serif */
+    --font-headlines: 'Playfair Display', serif;
     
     /* Spacing & Sizing */
     --spacing-unit: 8px;
@@ -45,7 +47,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-headlines);
-    color: var(--color-primary-action); /* Using ocean blue for headlines */
+    color: var(--color-primary-theme); /* Using ocean blue for headlines */
     margin-top: calc(var(--spacing-unit) * 3);
     margin-bottom: calc(var(--spacing-unit) * 1.5);
     line-height: 1.2;
@@ -68,13 +70,13 @@ p {
 }
 
 a {
-    color: var(--color-primary-action);
+    color: var(--color-primary-theme);
     text-decoration: none;
 }
 
 a:hover, a:focus {
     text-decoration: underline;
-    color: var(--color-wasabi-green);
+    color: var(--color-secondary-theme); /* Wasabi green for link hover */
 }
 
 img {
@@ -128,7 +130,7 @@ nav ul li a {
 nav ul li a:hover,
 nav ul li a:focus,
 nav ul li a.active { /* Assuming an 'active' class for current page */
-    background-color: var(--color-ocean-blue);
+    background-color: var(--color-primary-theme);
     color: var(--color-cloud);
     text-decoration: none;
 }
@@ -147,8 +149,8 @@ nav ul li a.active { /* Assuming an 'active' class for current page */
     position: absolute;
     top: -5px;
     right: -10px;
-    background-color: var(--color-saffron-accent);
-    color: var(--color-night);
+    background-color: var(--color-call-to-action); /* Saffron for cart count */
+    color: var(--color-neutral-dark); /* Dark text for better contrast on saffron */
     border-radius: 50%;
     padding: 2px 6px;
     font-size: 0.75rem;
@@ -178,10 +180,10 @@ footer p {
 }
 
 footer a {
-    color: var(--color-saffron-accent);
+    color: var(--color-accent-primary); /* Saffron for footer links */
 }
 footer a:hover, footer a:focus {
-    color: var(--color-wasabi-green);
+    color: var(--color-accent-secondary); /* Wasabi for footer link hover */
 }
 
 
@@ -189,32 +191,47 @@ footer a:hover, footer a:focus {
 .button {
     display: inline-block;
     padding: calc(var(--spacing-unit) * 1.25) calc(var(--spacing-unit) * 2.5);
-    background-color: var(--color-secondary-action); /* Wasabi green for general buttons */
-    color: var(--color-cloud);
+    background-color: var(--color-call-to-action); /* Saffron for general buttons/CTAs */
+    color: var(--color-neutral-dark); /* Dark text on Saffron for contrast */
     text-decoration: none;
     border-radius: var(--border-radius-medium);
-    font-weight: 600;
+    font-weight: 600; /* Inter semi-bold */
+    font-family: var(--font-primary);
     text-align: center;
-    border: none;
+    border: 2px solid transparent; /* Adding border for focus state */
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
 }
 
 .button:hover, .button:focus {
-    background-color: #69a33a; /* Darker wasabi */
-    color: var(--color-cloud);
+    background-color: #e6b44a; /* Darker Saffron */
+    color: var(--color-neutral-dark);
     text-decoration: none;
     transform: translateY(-2px);
+    border-color: var(--color-neutral-dark); /* Border for focus indication */
 }
 
-.button-primary {
-    background-color: var(--color-primary-action); /* Ocean blue for primary CTAs */
+.button-primary { /* Could be used for more prominent CTAs if needed */
+    background-color: var(--color-primary-theme); /* Ocean blue */
     color: var(--color-cloud);
 }
 
 .button-primary:hover, .button-primary:focus {
     background-color: #004469; /* Darker ocean blue */
     color: var(--color-cloud);
+    border-color: var(--color-saffron-accent);
+}
+
+.button-secondary { /* Example for a secondary action style */
+    background-color: transparent;
+    color: var(--color-primary-theme);
+    border: 2px solid var(--color-primary-theme);
+}
+
+.button-secondary:hover, .button-secondary:focus {
+    background-color: var(--color-primary-theme);
+    color: var(--color-cloud);
+    border-color: var(--color-primary-theme);
 }
 
 /* Basic responsive considerations for navigation */
@@ -265,4 +282,124 @@ footer a:hover, footer a:focus {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* --- Page Specific: About Us --- */
+
+.hero-section {
+    background-color: var(--color-primary-theme); /* Ocean Blue background */
+    color: var(--color-cloud); /* White text */
+    padding: calc(var(--spacing-unit) * 6) calc(var(--spacing-unit) * 3);
+    margin-bottom: calc(var(--spacing-unit) * 4); /* Space below hero */
+}
+
+.hero-section .hero-title {
+    color: var(--color-cloud); /* Ensure title is white */
+    font-size: clamp(2.5rem, 1.5vw + 2rem, 3.5rem); /* Larger hero title */
+    margin-bottom: calc(var(--spacing-unit) * 1);
+}
+
+.hero-section .hero-subtitle {
+    font-size: clamp(1.1rem, 0.5vw + 1rem, 1.5rem);
+    font-family: var(--font-primary);
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+.text-center {
+    text-align: center;
+}
+
+#founder-story .founder-image {
+    border-radius: var(--border-radius-medium);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+/* Card-like styling for points/features */
+.sustainability-points,
+.farm-partners-list ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--spacing-unit) * 3);
+    padding-left: 0; /* Remove default ul padding if it's a list */
+    list-style: none; /* Remove list styles if it's a list */
+}
+
+.sustainability-points .point,
+.farm-partners-list li {
+    background-color: var(--color-background-light);
+    border: 1px solid #e0e0e0; /* Light border for cards */
+    border-radius: var(--border-radius-medium);
+    padding: calc(var(--spacing-unit) * 2.5);
+    flex: 1 1 300px; /* Flex-grow, flex-shrink, flex-basis */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sustainability-points .point:hover,
+.farm-partners-list li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.sustainability-points .point img {
+    max-width: 60px; /* Control icon size */
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+.sustainability-points .point h4 {
+    color: var(--color-secondary-theme); /* Wasabi green for sub-section titles */
+    margin-top: 0;
+}
+
+#farm-to-table-map .map-placeholder img {
+    border-radius: var(--border-radius-medium);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+#careers-preview {
+    background-color: #f9f9f9; /* Light grey background for contrast */
+    padding: calc(var(--spacing-unit) * 4) calc(var(--spacing-unit) * 3);
+    text-align: center;
+    border-radius: var(--border-radius-medium);
+    margin-top: calc(var(--spacing-unit) * 4);
+}
+
+#careers-preview h3 {
+    color: var(--color-primary-theme);
+}
+
+/* Enhancements for general page structure */
+section {
+    padding: calc(var(--spacing-unit) * 3) 0; /* Vertical padding for sections */
+    margin-bottom: calc(var(--spacing-unit) * 2); /* Space between sections */
+}
+
+section > h2, section > h3 {
+    text-align: center;
+    margin-bottom: calc(var(--spacing-unit) * 3);
+}
+
+.farm-partners-list li h4 {
+    font-family: var(--font-primary);
+    font-weight: 600; /* Inter semi-bold */
+    color: var(--color-primary-theme); /* Ocean blue for partner names */
+    margin-top: 0;
+    margin-bottom: calc(var(--spacing-unit) * 0.5);
+}
+
+.farm-partners-list li h4 a {
+    color: inherit; /* Inherit color from h4 */
+    text-decoration: none;
+}
+
+.farm-partners-list li h4 a:hover {
+    text-decoration: underline;
+    color: var(--color-secondary-theme); /* Wasabi green for hover */
+}
+
+.farm-partners-list li p {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 0;
 }
