@@ -8,10 +8,12 @@
     --color-saffron-accent: #FFC857;
     --color-neutral-dark: #151515; /* High-contrast neutral */
     --color-cloud: #FFFFFF;       /* Using pure white for a clean background */
+    --color-background-subtle: #F4F8FA; /* New subtle background */
     
     --color-text-primary: var(--color-neutral-dark);
     --color-text-secondary: #555555; /* A slightly lighter grey for secondary text */
-    --color-background-light: var(--color-cloud);
+    --color-background-light: var(--color-background-subtle); /* CHANGED from --color-cloud */
+    --color-background-cards: var(--color-cloud); /* Explicitly keep cards white for contrast */
     --color-background-dark: var(--color-neutral-dark); /* For footer or inverted sections */
     --color-accent-primary: var(--color-saffron-accent);
     --color-accent-secondary: var(--color-wasabi-green);
@@ -440,7 +442,7 @@ footer a:hover, footer a:focus {
 /* Card visual polish */
 .sustainability-points .point,
 .farm-partners-list li {
-    background-color: var(--color-background-light);
+    background-color: var(--color-background-cards); /* Ensure cards stay white */
     border: 1px solid #e0e0e0;
     border-radius: var(--border-radius-medium);
     padding: calc(var(--spacing-unit) * 2.5);
