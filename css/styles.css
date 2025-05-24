@@ -2,24 +2,25 @@
 
 /* --- CSS Custom Properties (Variables) --- */
 :root {
-    /* Color Palette */
-    --color-ocean-blue: #005C8D;
-    --color-wasabi-green: #7DBE45;
-    --color-saffron-accent: #FFC857;
-    --color-neutral-dark: #151515; /* High-contrast neutral */
-    --color-cloud: #FFFFFF;       /* Using pure white for a clean background */
-    --color-background-subtle: #F4F8FA; /* New subtle background */
-    
-    --color-text-primary: var(--color-neutral-dark);
-    --color-text-secondary: #555555; /* A slightly lighter grey for secondary text */
-    --color-background-light: var(--color-background-subtle); /* CHANGED from --color-cloud */
-    --color-background-cards: var(--color-cloud); /* Explicitly keep cards white for contrast */
-    --color-background-dark: var(--color-neutral-dark); /* For footer or inverted sections */
-    --color-accent-primary: var(--color-saffron-accent);
-    --color-accent-secondary: var(--color-wasabi-green);
-    --color-call-to-action: var(--color-saffron-accent); /* Saffron for CTAs */
-    --color-primary-theme: var(--color-ocean-blue);
-    --color-secondary-theme: var(--color-wasabi-green);
+    /* New Black & Gold Color Palette */
+    --color-rich-black: #121212; /* Deep, rich black for backgrounds */
+    --color-lustrous-gold: #DAA520; /* Goldenrod - a classic, rich gold for primary accents */
+    --color-bright-gold-accent: #FFC857; /* Saffron, kept for brighter highlights, or a slightly lighter gold like #FFD700 */
+    --color-off-white-text: #EAEAEA; /* Soft off-white for text on dark backgrounds */
+    --color-dark-text-on-gold: #1A1A1A; /* Very dark grey for text on gold elements */
+    --color-card-background: #1E1E1E; /* Slightly lighter than main black for cards */
+    --color-border-gold-subtle: rgba(218, 165, 32, 0.3); /* Subtle gold for borders/hovers */
+
+    /* --- Primary Theme Variables --- */
+    --color-background-main: var(--color-rich-black);
+    --color-background-cards: var(--color-card-background);
+    --color-text-primary-on-dark: var(--color-off-white-text);
+    --color-text-secondary-on-dark: #AAAAAA; /* Lighter grey for secondary text on dark */
+    --color-text-on-accent: var(--color-dark-text-on-gold);
+
+    --color-theme-primary: var(--color-lustrous-gold);
+    --color-theme-secondary: var(--color-bright-gold-accent); /* Can be used for secondary highlights */
+    --color-theme-text-main: var(--color-rich-black); /* Default text if on a light (gold) bg */
 
     /* Typography */
     --font-primary: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -37,8 +38,8 @@
 /* --- Basic Body & Typography Styling --- */
 body {
     font-family: var(--font-primary);
-    color: var(--color-text-primary);
-    background-color: var(--color-background-light);
+    color: var(--color-text-primary-on-dark);
+    background-color: var(--color-background-main);
     line-height: 1.6;
     font-size: clamp(0.9rem, 0.6vw + 0.8rem, 1.2rem); /* Responsive base font size from lean prompt, adjusted max */
     margin: 0; /* Already in reset, but good for explicitness */
@@ -49,7 +50,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-headlines);
-    color: var(--color-primary-theme); /* Using ocean blue for headlines */
+    color: var(--color-theme-primary); /* Gold for headlines */
     margin-top: calc(var(--spacing-unit) * 3);
     margin-bottom: calc(var(--spacing-unit) * 1.5);
     line-height: 1.2;
@@ -72,13 +73,13 @@ p {
 }
 
 a {
-    color: var(--color-primary-theme);
+    color: var(--color-theme-primary); /* Gold for links */
     text-decoration: none;
 }
 
 a:hover, a:focus {
     text-decoration: underline;
-    color: var(--color-secondary-theme); /* Wasabi green for link hover */
+    color: var(--color-theme-secondary); /* Brighter gold for link hover */
 }
 
 img {
@@ -89,9 +90,9 @@ img {
 
 /* --- Header Enhancements --- */
 header {
-    background-color: var(--color-cloud); /* Kept light for a clean look */
-    padding: var(--spacing-unit) calc(var(--spacing-unit) * 3); /* Reduced vertical padding slightly */
-    border-bottom: 1px solid #e0e0e0; /* Softer border */
+    background-color: var(--color-rich-black); /* Rich black header */
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 3);
+    border-bottom: 1px solid var(--color-border-gold-subtle); /* Subtle gold border */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -101,17 +102,23 @@ header {
     box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Subtle shadow for depth */
 }
 
+nav { /* Added flex properties to nav to center the ul */
+    flex-grow: 1; /* Allows nav to take up available space */
+    display: flex;
+    justify-content: center; /* Centers the ul within the nav element */
+}
+
 .logo-container .logo-text {
     font-family: var(--font-headlines);
     font-size: clamp(1.8rem, 0.5vw + 1.6rem, 2.2rem); /* Slightly larger logo */
     font-weight: 700; /* Playfair Display bold */
-    color: var(--color-primary-theme); /* Ocean blue for logo */
+    color: var(--color-theme-primary); /* Gold for logo */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .logo-container .logo-text:hover {
-    color: var(--color-neutral-dark);
+    color: var(--color-bright-gold-accent); /* Brighter gold on hover */
 }
 
 nav ul {
@@ -129,7 +136,7 @@ nav ul li a {
     text-decoration: none;
     font-weight: 600; /* Inter semi-bold */
     font-family: var(--font-primary);
-    color: var(--color-neutral-dark); /* Darker text for better contrast */
+    color: var(--color-off-white-text); /* Off-white nav links */
     padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2); /* Increased padding for bigger hit area */
     border-radius: var(--border-radius-medium); /* Slightly more rounded */
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
@@ -145,7 +152,7 @@ nav ul li a::before {
     transform: translateX(-50%);
     width: 0;
     height: 2px;
-    background-color: var(--color-saffron-accent);
+    background-color: var(--color-lustrous-gold); /* Gold underline effect */
     transition: width 0.3s ease;
 }
 
@@ -159,14 +166,14 @@ nav ul li a:hover,
 nav ul li a:focus,
 nav ul li a.active {
     background-color: transparent; /* Remove background color change */
-    color: var(--color-primary-theme); /* Change text color to primary theme on hover/active */
+    color: var(--color-lustrous-gold); /* Gold text color on hover/active */
     text-decoration: none; /* Ensure no underline from default browser styles */
     transform: translateY(-1px); /* Subtle lift effect */
 }
 
 /* Adjust active link specifically if an active class is used */
 nav ul li a.active {
-    color: var(--color-primary-theme);
+    color: var(--color-lustrous-gold);
     font-weight: 700; /* Bolder for active */
 }
 
@@ -184,8 +191,8 @@ nav ul li a.active {
     position: absolute;
     top: -5px;
     right: -10px;
-    background-color: var(--color-call-to-action); /* Saffron for cart count */
-    color: var(--color-neutral-dark); /* Dark text for better contrast on saffron */
+    background-color: var(--color-lustrous-gold); /* Gold for cart count */
+    color: var(--color-dark-text-on-gold); /* Dark text for contrast */
     border-radius: 50%;
     padding: 2px 6px;
     font-size: 0.75rem;
@@ -202,70 +209,73 @@ main {
 }
 
 footer {
-    background-color: var(--color-neutral-dark);
-    color: var(--color-cloud);
+    background-color: #0D0D0D; /* Slightly different black for footer, or var(--color-rich-black) */
+    color: var(--color-off-white-text); /* Off-white text */
     padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 3);
     text-align: center;
     margin-top: calc(var(--spacing-unit) * 4);
+    border-top: 1px solid var(--color-border-gold-subtle);
 }
 
 footer p {
     margin-bottom: var(--spacing-unit);
     font-size: 0.9rem;
+    color: var(--color-text-secondary-on-dark); /* Lighter grey for footer secondary text */
 }
 
 footer a {
-    color: var(--color-accent-primary); /* Saffron for footer links */
+    color: var(--color-lustrous-gold); /* Gold for footer links */
 }
 footer a:hover, footer a:focus {
-    color: var(--color-accent-secondary); /* Wasabi for footer link hover */
+    color: var(--color-bright-gold-accent); /* Brighter gold for footer link hover */
 }
 
 /* --- Utility Classes --- */
 .button {
     display: inline-block;
     padding: calc(var(--spacing-unit) * 1.25) calc(var(--spacing-unit) * 2.5);
-    background-color: var(--color-call-to-action); /* Saffron for general buttons/CTAs */
-    color: var(--color-neutral-dark); /* Dark text on Saffron for contrast */
+    background-color: var(--color-lustrous-gold); /* Gold for general buttons/CTAs */
+    color: var(--color-dark-text-on-gold); /* Dark text on Gold for contrast */
     text-decoration: none;
     border-radius: var(--border-radius-medium);
     font-weight: 600; /* Inter semi-bold */
     font-family: var(--font-primary);
     text-align: center;
-    border: 2px solid transparent; /* Adding border for focus state */
+    border: 2px solid var(--color-lustrous-gold); /* Gold border */
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
 }
 
 .button:hover, .button:focus {
-    background-color: #e6b44a; /* Darker Saffron */
-    color: var(--color-neutral-dark);
+    background-color: var(--color-bright-gold-accent); /* Brighter gold on hover */
+    border-color: var(--color-bright-gold-accent);
+    color: var(--color-dark-text-on-gold);
     text-decoration: none;
     transform: translateY(-2px);
-    border-color: var(--color-neutral-dark); /* Border for focus indication */
 }
 
-.button-primary { /* Could be used for more prominent CTAs if needed */
-    background-color: var(--color-primary-theme); /* Ocean blue */
-    color: var(--color-cloud);
+.button-primary { /* This can be the main gold button style now */
+    background-color: var(--color-lustrous-gold);
+    color: var(--color-dark-text-on-gold);
+    border-color: var(--color-lustrous-gold);
 }
 
 .button-primary:hover, .button-primary:focus {
-    background-color: #004469; /* Darker ocean blue */
-    color: var(--color-cloud);
-    border-color: var(--color-saffron-accent);
+    background-color: var(--color-bright-gold-accent);
+    border-color: var(--color-bright-gold-accent);
+    color: var(--color-dark-text-on-gold);
 }
 
-.button-secondary { /* Example for a secondary action style */
+.button-secondary { /* Dark button with gold outline/text */
     background-color: transparent;
-    color: var(--color-primary-theme);
-    border: 2px solid var(--color-primary-theme);
+    color: var(--color-lustrous-gold);
+    border: 2px solid var(--color-lustrous-gold);
 }
 
 .button-secondary:hover, .button-secondary:focus {
-    background-color: var(--color-primary-theme);
-    color: var(--color-cloud);
-    border-color: var(--color-primary-theme);
+    background-color: var(--color-lustrous-gold);
+    color: var(--color-dark-text-on-gold);
+    border-color: var(--color-lustrous-gold);
 }
 
 /* Basic responsive considerations for navigation */
@@ -302,7 +312,7 @@ footer a:hover, footer a:focus {
 
 /* Accessibility: Focus visible */
 *:focus-visible {
-  outline: 3px solid var(--color-saffron-accent);
+  outline: 3px solid var(--color-lustrous-gold); /* Gold focus outline */
   outline-offset: 2px;
 }
 
@@ -322,8 +332,8 @@ footer a:hover, footer a:focus {
 
 .hero-section {
     position: relative; /* Needed for absolute positioning of overlay and image */
-    background-color: var(--color-primary-theme); /* Fallback if image fails */
-    color: var(--color-cloud);
+    background-color: var(--color-rich-black); /* Fallback if image fails */
+    color: var(--color-off-white-text);
     padding: calc(var(--spacing-unit) * 8) calc(var(--spacing-unit) * 3); /* Increased padding */
     margin-bottom: calc(var(--spacing-unit) * 4);
     overflow: hidden; /* To contain pseudo-elements or absolutely positioned children */
@@ -347,9 +357,9 @@ footer a:hover, footer a:focus {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 92, 141, 0.5); /* Ocean blue with 50% opacity for a lighter blur effect */
-    backdrop-filter: blur(5px); /* Added blur effect */
-    -webkit-backdrop-filter: blur(5px); /* Safari support for backdrop-filter */
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay, 50% opacity */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     z-index: 2;
 }
 
@@ -359,7 +369,7 @@ footer a:hover, footer a:focus {
 }
 
 .hero-section .hero-title {
-    color: var(--color-cloud);
+    color: var(--color-off-white-text); /* Off-white for hero title */
     font-size: clamp(2.8rem, 2vw + 2.2rem, 4.5rem); /* Even larger hero title */
     margin-bottom: calc(var(--spacing-unit) * 2);
     font-weight: 700; /* Playfair Display Bold */
@@ -367,8 +377,8 @@ footer a:hover, footer a:focus {
 }
 
 .hero-title .highlight-playful {
-    font-family: 'Playfair Display', serif; /* Or a more playful script if available */
-    color: var(--color-saffron-accent); /* Saffron accent for highlight */
+    font-family: 'Playfair Display', serif;
+    color: var(--color-lustrous-gold); /* Gold for highlight */
     display: inline-block; /* Allows for subtle transformations if desired */
 }
 
@@ -432,7 +442,7 @@ footer a:hover, footer a:focus {
 .founder-text-content .lead-paragraph {
     font-size: clamp(1.1rem, 0.5vw + 0.9rem, 1.3rem);
     font-weight: 400;
-    color: var(--color-text-secondary);
+    color: var(--color-text-secondary-on-dark);
     line-height: 1.7;
     margin-bottom: calc(var(--spacing-unit) * 2.5);
 }
@@ -444,8 +454,8 @@ footer a:hover, footer a:focus {
 /* Card visual polish */
 .sustainability-points .point,
 .farm-partners-list li {
-    background-color: var(--color-background-cards); /* Ensure cards stay white */
-    border: 1px solid #e0e0e0;
+    background-color: var(--color-background-cards); /* Dark card background */
+    border: 1px solid var(--color-border-gold-subtle); /* Subtle gold border for cards */
     border-radius: var(--border-radius-medium);
     padding: calc(var(--spacing-unit) * 2.5);
     flex: 1 1 300px;
@@ -463,7 +473,7 @@ footer a:hover, footer a:focus {
     left: 0;
     width: 100%;
     height: 4px; /* Thickness of the accent border */
-    background-color: var(--color-saffron-accent); /* Saffron accent */
+    background-color: var(--color-lustrous-gold); /* Gold accent top border */
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s ease-out;
@@ -477,8 +487,8 @@ footer a:hover, footer a:focus {
 .sustainability-points .point:hover,
 .farm-partners-list li:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    border-color: #d0d0d0; /* Slightly darker border on hover */
+    box-shadow: 0 6px 15px rgba(218, 165, 32, 0.1); /* Subtle gold shadow */
+    border-color: var(--color-lustrous-gold); /* Stronger gold border on hover */
 }
 
 .sustainability-points .point img {
@@ -487,7 +497,7 @@ footer a:hover, footer a:focus {
 }
 
 .sustainability-points .point h4 {
-    color: var(--color-secondary-theme); /* Wasabi green for sub-section titles */
+    color: var(--color-lustrous-gold); /* Gold for sub-section titles in cards */
     margin-top: 0;
 }
 
@@ -497,15 +507,16 @@ footer a:hover, footer a:focus {
 }
 
 #careers-preview {
-    background-color: #f9f9f9; /* Light grey background for contrast */
+    background-color: var(--color-card-background); /* Dark card background */
     padding: calc(var(--spacing-unit) * 4) calc(var(--spacing-unit) * 3);
     text-align: center;
     border-radius: var(--border-radius-medium);
     margin-top: calc(var(--spacing-unit) * 4);
+    border: 1px solid var(--color-border-gold-subtle);
 }
 
 #careers-preview h3 {
-    color: var(--color-primary-theme);
+    color: var(--color-lustrous-gold);
 }
 
 /* Enhancements for general page structure */
@@ -522,7 +533,7 @@ section > h2, section > h3 {
 .farm-partners-list li h4 {
     font-family: var(--font-primary);
     font-weight: 600; /* Inter semi-bold */
-    color: var(--color-primary-theme); /* Ocean blue for partner names */
+    color: var(--color-lustrous-gold); /* Gold for partner names */
     margin-top: 0;
     margin-bottom: calc(var(--spacing-unit) * 0.5);
 }
@@ -534,11 +545,11 @@ section > h2, section > h3 {
 
 .farm-partners-list li h4 a:hover {
     text-decoration: underline;
-    color: var(--color-secondary-theme); /* Wasabi green for hover */
+    color: var(--color-bright-gold-accent); /* Brighter gold for hover */
 }
 
 .farm-partners-list li p {
     font-size: 0.9rem;
-    color: var(--color-text-secondary);
+    color: var(--color-text-secondary-on-dark); /* Lighter grey for card text */
     margin-bottom: 0;
 }
