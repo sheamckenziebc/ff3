@@ -1,0 +1,268 @@
+/* css/styles.css */
+
+/* --- CSS Custom Properties (Variables) --- */
+:root {
+    /* Color Palette */
+    --color-ocean-blue: #005C8D;
+    --color-wasabi-green: #7DBE45;
+    --color-saffron-accent: #FFC857;
+    --color-neutral-dark: #151515; /* High-contrast neutral from original prompt */
+    --color-night: #121212;       /* Night from lean prompt */
+    --color-cloud: #FFFFFF;       /* Cloud from lean prompt */
+    --color-text-primary: var(--color-night);
+    --color-text-secondary: #4a4a4a; /* A slightly lighter grey for secondary text */
+    --color-background-light: var(--color-cloud);
+    --color-background-dark: var(--color-night);
+    --color-accent: var(--color-saffron-accent);
+    --color-primary-action: var(--color-ocean-blue);
+    --color-secondary-action: var(--color-wasabi-green);
+
+    /* Typography */
+    --font-primary: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    --font-headlines: 'Playfair Display', serif; /* From original prompt, fallback to serif */
+    
+    /* Spacing & Sizing */
+    --spacing-unit: 8px;
+    --border-radius-small: 3px;
+    --border-radius-medium: 6px;
+
+    /* Performance Goal: Total initial payload ≤ 100 KB. Inline critical CSS. */
+    /* This will be handled by how we structure and load CSS later, not just variables. */
+}
+
+/* --- Basic Body & Typography Styling --- */
+body {
+    font-family: var(--font-primary);
+    color: var(--color-text-primary);
+    background-color: var(--color-background-light);
+    line-height: 1.6;
+    font-size: clamp(0.9rem, 0.6vw + 0.8rem, 1.2rem); /* Responsive base font size from lean prompt, adjusted max */
+    margin: 0; /* Already in reset, but good for explicitness */
+    padding: 0; /* Already in reset */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-headlines);
+    color: var(--color-primary-action); /* Using ocean blue for headlines */
+    margin-top: calc(var(--spacing-unit) * 3);
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: clamp(2rem, 1vw + 1.8rem, 3rem); /* Responsive H1 */
+}
+
+h2 {
+    font-size: clamp(1.75rem, 1vw + 1.55rem, 2.5rem); /* Responsive H2 */
+}
+
+h3 {
+    font-size: clamp(1.5rem, 1vw + 1.3rem, 2rem); /* Responsive H3 */
+}
+
+p {
+    margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+a {
+    color: var(--color-primary-action);
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    text-decoration: underline;
+    color: var(--color-wasabi-green);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Removes bottom space under images */
+}
+
+/* --- Basic Layout Elements --- */
+header {
+    background-color: var(--color-background-light);
+    padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 3);
+    border-bottom: 1px solid #eee; /* Light separator */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container .logo-text {
+    font-family: var(--font-headlines);
+    font-size: clamp(1.5rem, 0.5vw + 1.3rem, 2rem);
+    font-weight: 600; /* Semi-bold for Playfair if available */
+    color: var(--color-neutral-dark);
+    text-decoration: none;
+}
+.logo-container .logo-text:hover {
+    color: var(--color-ocean-blue);
+}
+
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: calc(var(--spacing-unit) * 2.5);
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-weight: 600; /* Inter semi-bold */
+    color: var(--color-text-primary);
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 1.5);
+    border-radius: var(--border-radius-small);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a:focus,
+nav ul li a.active { /* Assuming an 'active' class for current page */
+    background-color: var(--color-ocean-blue);
+    color: var(--color-cloud);
+    text-decoration: none;
+}
+
+#cart-icon-container {
+    position: relative; /* For potential badge positioning */
+    margin-left: calc(var(--spacing-unit) * 2);
+}
+
+#cart-icon-container img {
+    width: 32px; /* Placeholder size */
+    height: 32px;
+}
+
+#cart-icon-container #cart-item-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: var(--color-saffron-accent);
+    color: var(--color-night);
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    min-width: 10px;
+    text-align: center;
+}
+
+
+main {
+    padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 3);
+    max-width: 1200px; /* Max content width for larger screens */
+    margin: 0 auto; /* Center main content */
+}
+
+footer {
+    background-color: var(--color-neutral-dark);
+    color: var(--color-cloud);
+    padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 3);
+    text-align: center;
+    margin-top: calc(var(--spacing-unit) * 4);
+}
+
+footer p {
+    margin-bottom: var(--spacing-unit);
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: var(--color-saffron-accent);
+}
+footer a:hover, footer a:focus {
+    color: var(--color-wasabi-green);
+}
+
+
+/* --- Utility Classes --- */
+.button {
+    display: inline-block;
+    padding: calc(var(--spacing-unit) * 1.25) calc(var(--spacing-unit) * 2.5);
+    background-color: var(--color-secondary-action); /* Wasabi green for general buttons */
+    color: var(--color-cloud);
+    text-decoration: none;
+    border-radius: var(--border-radius-medium);
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover, .button:focus {
+    background-color: #69a33a; /* Darker wasabi */
+    color: var(--color-cloud);
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+.button-primary {
+    background-color: var(--color-primary-action); /* Ocean blue for primary CTAs */
+    color: var(--color-cloud);
+}
+
+.button-primary:hover, .button-primary:focus {
+    background-color: #004469; /* Darker ocean blue */
+    color: var(--color-cloud);
+}
+
+/* Basic responsive considerations for navigation */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        margin-top: var(--spacing-unit);
+    }
+    nav ul li {
+        margin-left: 0;
+        margin-bottom: var(--spacing-unit);
+        width: 100%;
+    }
+    nav ul li a {
+        display: block; /* Make nav links full width on mobile */
+        text-align: center;
+    }
+    #cart-icon-container {
+        position: absolute; /* Example: move cart icon to top right on mobile */
+        top: calc(var(--spacing-unit) * 2);
+        right: calc(var(--spacing-unit) * 3);
+    }
+}
+
+/* Hidden class for JS interactions */
+.hidden, .cart-hidden, .modal-hidden {
+    display: none !important; /* Important to override other display properties if needed */
+}
+
+/* Accessibility: Focus visible */
+*:focus-visible {
+  outline: 3px solid var(--color-saffron-accent);
+  outline-offset: 2px;
+}
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

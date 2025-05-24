@@ -1,0 +1,131 @@
+{
+  "categories": [
+    {
+      "name": "Mains",
+      "slug": "main",
+      "items": [
+        {
+          "id": "M001",
+          "name": "Butter Chicken Bao Buns",
+          "description": "Tender butter chicken in fluffy bao buns with a hint of cilantro.",
+          "price": 12.99,
+          "image": "assets/images/menu/butter-chicken-bao_placeholder.jpg",
+          "tags": ["popular", "contains-dairy", "contains-gluten"],
+          "nutrition": {
+            "calories": "450 kcal",
+            "protein": "25g",
+            "fat": "20g",
+            "carbs": "40g",
+            "allergens": ["dairy", "gluten", "nuts (trace)"]
+          }
+        },
+        {
+          "id": "M002",
+          "name": "Spicy Paneer Tikka Wrap",
+          "description": "Grilled paneer tikka, mixed greens, and mint chutney in a whole wheat wrap.",
+          "price": 11.50,
+          "image": "assets/images/menu/paneer-tikka-wrap_placeholder.jpg",
+          "tags": ["vegetarian", "spicy", "contains-dairy", "contains-gluten"],
+          "nutrition": {
+            "calories": "520 kcal",
+            "protein": "22g",
+            "fat": "28g",
+            "carbs": "45g",
+            "allergens": ["dairy", "gluten"]
+          }
+        },
+        {
+          "id": "M003",
+          "name": "Vegan Chana Masala Bowl",
+          "description": "Hearty chickpea curry served with basmati rice and a side of pickled onions.",
+          "price": 10.99,
+          "image": "assets/images/menu/chana-masala-bowl_placeholder.jpg",
+          "tags": ["vegan", "vegetarian", "gluten-free", "healthy"],
+          "nutrition": {
+            "calories": "380 kcal",
+            "protein": "15g",
+            "fat": "10g",
+            "carbs": "55g",
+            "allergens": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "slug": "sides",
+      "items": [
+        {
+          "id": "S001",
+          "name": "Masala Fries",
+          "description": "Crispy fries tossed in our signature chaat masala spice blend.",
+          "price": 5.50,
+          "image": "assets/images/menu/masala-fries_placeholder.jpg",
+          "tags": ["vegetarian", "vegan (request no yogurt dip)", "spicy"],
+          "nutrition": {
+            "calories": "300 kcal",
+            "protein": "5g",
+            "fat": "15g",
+            "carbs": "35g",
+            "allergens": ["gluten (cross-contamination)"]
+          }
+        },
+        {
+          "id": "S002",
+          "name": "Samosa Chaat",
+          "description": "Crushed samosas topped with yogurt, chutneys, and sev.",
+          "price": 7.00,
+          "image": "assets/images/menu/samosa-chaat_placeholder.jpg",
+          "tags": ["vegetarian", "contains-dairy", "contains-gluten"],
+          "nutrition": {
+            "calories": "400 kcal",
+            "protein": "10g",
+            "fat": "20g",
+            "carbs": "45g",
+            "allergens": ["dairy", "gluten", "legumes"]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "slug": "drinks",
+      "items": [
+        {
+          "id": "D001",
+          "name": "Mango Lassi",
+          "description": "Refreshing yogurt-based mango smoothie.",
+          "price": 4.50,
+          "image": "assets/images/menu/mango-lassi_placeholder.jpg",
+          "tags": ["vegetarian", "contains-dairy", "gluten-free"],
+          "nutrition": {
+            "calories": "250 kcal",
+            "protein": "8g",
+            "fat": "10g",
+            "carbs": "30g",
+            "allergens": ["dairy"]
+          }
+        },
+        {
+          "id": "D002",
+          "name": "Ginger Chai",
+          "description": "Traditional Indian spiced tea with fresh ginger.",
+          "price": 3.00,
+          "image": "assets/images/menu/ginger-chai_placeholder.jpg",
+          "tags": ["vegetarian", "vegan (request almond milk)", "gluten-free"],
+          "nutrition": {
+            "calories": "80 kcal",
+            "protein": "2g",
+            "fat": "3g",
+            "carbs": "10g",
+            "allergens": ["dairy (default)"]
+          }
+        }
+      ]
+    }
+  ],
+  "restaurantInfo": {
+    "currency": "CAD",
+    "currencySymbol": "$"
+  }
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhay's Eats - Delicious Indo-Pacific Comfort Food in Victoria, BC</title>
+    <meta name="description" content="Experience flavour-forward comfort food with Indo-Pacific twists at Abhay's Eats. Open late in downtown Victoria, BC.">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <!-- Logo can be text or an SVG/image later -->
+            <a href="index.html" class="logo-text">Abhay's Eats</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <!-- Placeholder for future rewards link -->
+                <li><a href="#rewards">Rewards</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-video-container">
+                <!-- Placeholder for 9-sec looping MP4 hero video -->
+                <video id="heroVideo" width="100%" autoplay loop muted playsinline poster="assets/images/hero-poster_placeholder.jpg">
+                    <!-- <source src="assets/video/hero.mp4" type="video/mp4"> -->
+                    Your browser does not support the video tag.
+                </video>
+                <div class="hero-overlay-text">
+                    <h2>Fast, Flavour-Forward Comfort Food</h2>
+                    <p>Indo-Pacific Twists, Served Fresh in Downtown Victoria</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="usp-badges">
+            <!-- Placeholders for USP badges -->
+            <div class="usp-badge">
+                <img src="assets/images/usp-local_placeholder.png" alt="Hyper-Local Sourcing Icon">
+                <p>Hyper-Local Sourcing</p>
+            </div>
+            <div class="usp-badge">
+                <img src="assets/images/usp-nutrition_placeholder.png" alt="Transparent Nutrition Icon">
+                <p>Transparent Nutrition</p>
+            </div>
+            <div class="usp-badge">
+                <img src="assets/images/usp-latenight_placeholder.png" alt="Late Night Hours Icon">
+                <p>Late-Night Hours</p>
+            </div>
+        </section>
+
+        <section id="menu-sampler">
+            <!-- Placeholder for dynamic menu sampler -->
+            <h2>Taste Our Menu</h2>
+            <div class="menu-items-container">
+                <!-- Menu items will be loaded here by js/menu.js -->
+            </div>
+            <a href="menu.html" class="button">View Full Menu</a>
+        </section>
+        
+        <section id="sustainability-highlight">
+            <h2>Sustainable & Local</h2>
+            <p>We proudly use carbon-neutral packaging and partner with local farms.</p>
+            <!-- Placeholder for farm partner logos -->
+        </section>
+
+    </main>
+
+    <div id="sticky-order-ribbon">
+        <!-- Sticky "Order Now" bar for mobile -->
+        <a href="menu.html" class="order-now-cta button-primary">Order Now</a>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Abhay's Eats. All Rights Reserved.</p>
+            <p>123 Douglas St, Victoria, BC, V8W 2B4</p>
+            <!-- Schema.org structured data will be added here -->
+        </div>
+    </footer>
+
+    <!-- General scripts, cart.js might be loaded here or per page depending on final component structure -->
+    <script src="js/cart.js"></script>
+    <!-- menu.js for the sampler, if any -->
+    <script src="js/menu.js"></script> 
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Abhay's Eats",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "### Douglas St", 
+        "addressLocality": "Victoria",
+        "addressRegion": "BC",
+        "postalCode": "V8W 2B4",
+        "addressCountry": "CA"
+      },
+      "geo": { 
+        "@type": "GeoCoordinates",
+        "latitude": "48.4284", 
+        "longitude": "-123.3656" 
+      },
+      "openingHours": "Mo-Su 11:00-02:00", 
+      "servesCuisine": ["Fast Food", "Indian Fusion"],
+      "url": "https://abhayseats.github.io", // To be replaced with actual live URL
+      "image": "assets/images/restaurant-logo_placeholder.png", // Placeholder for logo
+      "telephone": "+12505550199" // Added from contact.html schema for consistency
+    }
+    </script>
+</body>
+</html>

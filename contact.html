@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Abhay's Eats - Get In Touch</title>
+    <meta name="description" content="Contact Abhay's Eats for inquiries, catering orders, or to find our location and opening hours in Victoria, BC.">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Schema.org for Restaurant will be added here or in a global script -->
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="index.html" class="logo-text">Abhay's Eats</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#rewards">Rewards</a></li>
+            </ul>
+        </nav>
+        <!-- Cart icon/summary placeholder -->
+        <div id="cart-icon-container">
+            <a href="#cart"> <!-- This will likely trigger the slide-in cart via JS -->
+                <img src="assets/images/cart-icon_placeholder.svg" alt="Shopping Cart">
+                <span id="cart-item-count">0</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section id="contact-hero">
+            <h2>Get In Touch</h2>
+            <p>We'd love to hear from you! Find us, call us, or send a message.</p>
+        </section>
+
+        <section id="contact-details">
+            <div class="contact-info">
+                <h3>Our Location</h3>
+                <address>
+                    ### Douglas St<br> 
+                    Victoria, BC V8W 2B4<br>
+                    Canada
+                </address>
+                <p><strong>Phone:</strong> <a href="tel:+12505550199">+1 (250) 555-0199</a> (Click to call)</p>
+                
+                <h3>Opening Hours</h3>
+                <p>Monday - Sunday: 11:00 AM - 2:00 AM (Kitchen closes at 1:30 AM)</p>
+                <!-- Detailed openingHoursSpecification will be in JSON-LD -->
+            </div>
+
+            <div class="map-container">
+                <!-- Placeholder for Google Map Embed -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2649.726553100113!2d-123.36820168434274!3d48.42831897924719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548f749b777cf98d%3A0x537126f06193314f!2sDouglas%20St%2C%20Victoria%2C%20BC!5e0!3m2!1sen!2sca!4v1678886400000!5m2!1sen!2sca" 
+                    width="600" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Google Map of Abhay's Eats Location">
+                </iframe>
+                <!-- Note: Replace with actual business location URL in src -->
+            </div>
+        </section>
+
+        <section id="contact-form-section">
+            <h3>Order Catering / General Inquiries</h3>
+            <p>For large catering orders or any other questions, please use the form linked below. We'll get back to you as soon as possible!</p>
+            <!-- 
+                The form itself will be hosted by Formspree.
+                Replace YOUR_FORMSPREE_ENDPOINT with the actual endpoint.
+                Example: <form action="https://formspree.io/f/YOUR_CODE" method="POST">
+            -->
+            <a href="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT_PLACEHOLDER" class="button button-primary" target="_blank" rel="noopener noreferrer">Send Us a Message</a>
+            <p><small>Please note: This link will take you to an external Formspree page to submit your message.</small></p>
+        </section>
+        
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Abhay's Eats. All Rights Reserved.</p>
+            <p>### Douglas St, Victoria, BC V8W 2B4</p>
+            <!-- Schema.org structured data will be added here or in a global script -->
+        </div>
+    </footer>
+
+    <script src="js/cart.js"></script>
+    <!-- Schema.org JSON-LD script -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Abhay's Eats",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "### Douglas St", 
+        "addressLocality": "Victoria",
+        "addressRegion": "BC",
+        "postalCode": "V8W 2B4",
+        "addressCountry": "CA"
+      },
+      "geo": { 
+        "@type": "GeoCoordinates",
+        "latitude": "48.4284", 
+        "longitude": "-123.3656" 
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "11:00",
+          "closes": "02:00" 
+        }
+      ],
+      "servesCuisine": ["Fast Food", "Indian Fusion"],
+      "telephone": "+12505550199",
+      "url": "https://abhayseats.github.io", // Replace with actual GitHub Pages URL when known
+      "priceRange": "$$", // Optional: Or specific range like "$5-15"
+      "paymentAccepted": "Cash, Credit Card", // Optional
+      "image": "assets/images/restaurant-logo_placeholder.png" // Replace with actual logo image
+      // Placeholder for kitchen hours distinction if possible with schema
+      // "sameAs": [ // Links to social media and Google Business Profile
+      //   "https://www.instagram.com/abhayseats_placeholder",
+      //   "https://www.tiktok.com/@abhayseats_placeholder",
+      //   "YOUR_GOOGLE_BUSINESS_PROFILE_URL"
+      // ]
+    }
+    </script>
+</body>
+</html>
